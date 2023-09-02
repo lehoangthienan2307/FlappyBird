@@ -27,15 +27,17 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.touchCount > 0)
         {
             Jump();
             
             
         }
+        transform.eulerAngles = new Vector3(0, 0, birdRigidbody2D.velocity.y * 5f);
     }
     private void Jump() {
         birdRigidbody2D.velocity = Vector2.up * JUMP_AMOUNT;
+        
         //SoundManager.PlaySound(SoundManager.Sound.BirdJump);
     }
     private void AnimateSprite()
